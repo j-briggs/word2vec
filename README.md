@@ -8,7 +8,3 @@ Given a text corpus, the word2vec tool learns a vector for every word in the voc
 
 More information about the code is provided at https://code.google.com/p/word2vec
 
-TODO:
-on linux and check on win
-* use fopen64 to load large files
-* find away around "memory allocation failed."
