@@ -549,7 +549,7 @@ void TrainModel() {
   if (negative > 0) InitUnigramTable();
   start = clock();
   for (a = 0; a < num_threads; a++) threads.create_thread(boost::bind(TrainModelThread, (void *)a));//pthread_create(&pt[a], NULL, TrainModelThread, (void *)a);
-  //for (a = 0; a < num_threads; a++) pthread_join(pt[a], NULL);
+  threads.join_all();//for (a = 0; a < num_threads; a++) pthread_join(pt[a], NULL);
   fo = fopen(output_file, "wb");
   if (classes == 0) {
     // Save the word vectors
@@ -607,7 +607,6 @@ void TrainModel() {
     free(cl);
   }
   fclose(fo);
-  threads.join_all();
 }
 
 int ArgPos(char *str, int argc, char **argv) {
